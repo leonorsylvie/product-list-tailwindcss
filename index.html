@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/output.css">
+    <title>Gadgets Product List</title>
+</head>
+<style>
+    @font-face {
+        font-family: 'Avant Garde';
+        src: url('./fonts/ITC\ Avant\ Garde\ Gothic\ LT\ Bold.otf') format('woff2');
+    }
+
+    @font-face {
+        font-family: 'Neue Montreal';
+        src: url('./fonts/NeueMontreal-Regular.otf');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .title {
+        font-family: 'Avant Garde', sans-serif;
+    }
+
+    .description {
+        font-family: 'Neue Montreal', sans-serif;
+    }
+    
+</style>
+<body class="bg-bg-secondary">
+    <main class="w-10/12 m-auto bg">
+        <h1 class="title pt-8 pb-2 md:pb-4 mb:pt-12 text-2xl uppercase text-center md:text-4xl">Gadgets Product List</h1>
+        <hr class="h-0.5 bg-bg-primary mb-6">
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="py-8 px-6 rounded-xl bg-bg-primary">
+                <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/camera.webp" alt="camera">
+                <h1 class="title text-bg-secondary uppercase text-3xl font-bold tracking-tighter">Camera</h1>
+                <p class="description text-xl text-bg-secondary">$10.00</p>
+                <p class="description mb-3 text-secondary-color product-quantity">Quantity: 5</p>
+                <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold">Add to Cart</button>
+            </div>
+            <div class="py-8 px-6 rounded-xl bg-bg-primary">
+                <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/clock.webp" alt="clock">
+                <h1 class="title text-bg-secondary uppercase text-3xl font-bold tracking-tighter">Clock</h1>
+                <p class="description text-xl text-bg-secondary">$15.00</p> 
+                <p class="description mb-3 text-secondary-color product-quantity">Quantity: 3</p>
+                <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold">Add to Cart</button>
+            </div>
+            <div class="py-8 px-6 rounded-xl bg-bg-primary">
+                <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/powerbank.webp" alt="powerbank">
+                <h1 class="title text-bg-secondary uppercase text-3xl font-bold tracking-tighter">PowerBank</h1>
+                <p class="description text-xl text-bg-secondary">$8.00</p>
+                <p class="description mb-3 text-secondary-color product-quantity">Quantity: 7</p>
+                <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold">Add to Cart</button>
+            </div>
+            <div class="py-8 px-6 rounded-xl bg-bg-primary">
+                <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/smartphone.webp" alt="smartphone">
+                <h1 class="title text-bg-secondary uppercase text-3xl font-bold tracking-tighter">Smartphone</h1>
+                <p class="description text-xl text-bg-secondary">$12.00</p>
+                <p class="description mb-3 text-secondary-color product-quantity">Quantity: 10</p>
+                <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold">Add to Cart</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+<!-- MADE WITH <3 BY BRYAN -->
