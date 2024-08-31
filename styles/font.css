@@ -18,10 +18,13 @@
     font-family: 'Neue Montreal', 'Arial', sans-serif;
 }
 
-.search-bar {
+.search__filter {
     display: flex;
     justify-content: space-between;
-    /* background-color: red; */
+}
+
+.search, .filter {
+    padding-left: 10px;
 }
 
 .product-list {

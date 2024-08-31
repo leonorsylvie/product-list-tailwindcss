@@ -14,16 +14,16 @@
             <h1 class="title pt-8 pb-2 md:pb-4 mb:pt-12 uppercase tracking-tighter text-2xl md:text-4xl">Satori Product List</h1>
             <hr class="h-0.5 bg-bg-primary mb-6">
             <div class="w-full lg:w-1/4">
-                <div class="search-bar mb-4 ">
+                <div class="search__filter mb-4">
                     <div class="filter-bar">
-                        <select class="rounded-xl px-6 py-2" id="filter" onchange="filterProducts()">
+                        <select class="filter rounded-xl py-2" id="filter" onchange="filterProducts()">
                             <option value="">Filter by category</option>
                             <option value="coffee">Coffee</option>
                             <option value="beans">Beans</option>
                             <option value="equipment">Equipment</option>
                         </select>
                     </div>
-                    <input class="px-6 py-2 rounded-xl w-3/12" type="text" id="search" placeholder="Search products..." oninput="filterProducts()">
+                    <input class="search rounded-xl w-3/12" type="text" id="search" placeholder="Search products..." oninput="filterProducts()">
                 </div>
             </div>
             <div class="product-list mb-4">
@@ -72,7 +72,7 @@
             </div>
         </div>
     </main>
+    
     <script src="scripts/script.js"></script>
-   
 </body>
 </html>

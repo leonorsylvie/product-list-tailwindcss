@@ -31,7 +31,8 @@ function filterProducts() {
 
         if (matchesSearch && matchesCategory) {
             product.style.display = '';
-        } else {
+        } 
+        else {
             product.style.display = 'none';
         }
     });
