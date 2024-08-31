@@ -4,144 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/output.css">
-    <title>Gadgets Product List</title>
+    <link rel="stylesheet" href="styles/font.css">
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script> 
+    <title>Satori Product List</title>
 </head>
-<style>
-    @font-face {
-        font-family: 'Avant Garde';
-        src: url('./fonts/ITC\ Avant\ Garde\ Gothic\ LT\ Bold.otf') format('woff2');
-    }
-
-    @font-face {
-        font-family: 'Neue Montreal';
-        src: url('./fonts/NeueMontreal-Regular.otf');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    .title {
-        font-family: 'Avant Garde', sans-serif;
-    }
-
-    .description {
-        font-family: 'Neue Montreal', sans-serif;
-    }
-</style>
 <body class="bg-bg-secondary">
-    <main class="w-10/12 m-auto bg">
-        <h1 class="title pt-8 pb-2 md:pb-4 mb:pt-12 text-2xl uppercase text-center md:text-4xl">Gadgets Product List</h1>
-        <hr class="h-0.5 bg-bg-primary mb-6">
-        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-            <div class="py-8 px-6 rounded-xl bg-bg-primary">
-                <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/camera.webp" alt="camera">
-                <h1 class="title text-bg-secondary uppercase text-3xl font-bold tracking-tighter">Camera</h1>
-                <p class="description text-xl text-bg-secondary">$10.00</p>
-                <p class="description mb-3 text-secondary-color product-quantity">Quantity: 5</p>
-                <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold add-to-cart">Add to Cart</button>
-            </div>
-            <div class="py-8 px-6 rounded-xl bg-bg-primary">
-                <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/clock.webp" alt="clock">
-                <h1 class="title text-bg-secondary uppercase text-3xl font-bold tracking-tighter">Clock</h1>
-                <p class="description text-xl text-bg-secondary">$15.00</p> 
-                <p class="description mb-3 text-secondary-color product-quantity">Quantity: 3</p>
-                <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold add-to-cart">Add to Cart</button>
-            </div>
-            <div class="py-8 px-6 rounded-xl bg-bg-primary">
-                <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/powerbank.webp" alt="powerbank">
-                <h1 class="title text-bg-secondary uppercase text-3xl font-bold tracking-tighter">PowerBank</h1>
-                <p class="description text-xl text-bg-secondary">$8.00</p>
-                <p class="description mb-3 text-secondary-color product-quantity">Quantity: 7</p>
-                <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold add-to-cart">Add to Cart</button>
-            </div>
-            <div class="py-8 px-6 rounded-xl bg-bg-primary">
-                <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/smartphone.webp" alt="smartphone">
-                <h1 class="title text-bg-secondary uppercase text-3xl font-bold tracking-tighter">Smartphone</h1>
-                <p class="description text-xl text-bg-secondary">$12.00</p>
-                <p class="description mb-3 text-secondary-color product-quantity">Quantity: 10</p>
-                <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold add-to-cart">Add to Cart</button>
-            </div>
-        </div>
-        
-        <div id="cart" class="py-8 px-6 bg-bg-primary rounded-xl mb-4">
-            <p class="description text-xl text-bg-secondary">Your cart is empty.</p>
-        </div>
-
-        <button id="clear-cart" class="bg-bg-primary py-4 px-6 text-bg-secondary rounded-xl uppercase font-semibold mt-6">Clear Cart</button>
-    </main>
-    
-    <script>
-        //load cart from localStorage
-        function loadCart() {
-            return JSON.parse(localStorage.getItem('cart')) || [];
-        }
-
-        //cart to localStorage
-        function saveCart(cart) {
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-
-        function addToCart(item) {
-            const cart = loadCart();
-            const existingItem = cart.find(cartItem => cartItem.name === item.name);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } 
-            else {
-                cart.push(item);
-            }
-            saveCart(cart);
-            displayCart();
-        }
-
-        function clearCart() {
-            localStorage.removeItem('cart');
-            displayCart(); //update cart
-            console.log("Cart has been cleared!")
-        }
-
-        //clear cart
-        document.getElementById('clear-cart').addEventListener('click', clearCart);
-
-        function displayCart() {
-            const cart = loadCart();
-            const cartElement = document.getElementById('cart');
-
-            if (cart.length === 0) {
-                cartElement.innerHTML = '<p class="description text-xl text-bg-secondary">Your cart is empty.</p>';
-            } else {
-                cartElement.innerHTML = cart.map(item => `
-                    <div class="mb-4">
-                        <h3 class="title text-bg-secondary uppercase text-xl font-bold">${item.name}</h3>
-                        <p class="description text-lg text-bg-secondary">Price: $${item.price.toFixed(2)}</p>
-                        <p class="description text-lg text-bg-secondary">Quantity: ${item.quantity}</p>
-                        <p class="description text-lg text-bg-secondary">Subtotal: $${(item.price * item.quantity).toFixed(2)}</p>
+    <main class="w-10/12 m-auto flex flex-col lg:flex-row">
+        <div class="w-full lg:w-3/4">
+            <h1 class="title pt-8 pb-2 md:pb-4 mb:pt-12 uppercase tracking-tighter text-2xl md:text-4xl">Satori Product List</h1>
+            <hr class="h-0.5 bg-bg-primary mb-6">
+            <div class="w-full lg:w-1/4">
+                <div class="search-bar mb-4 ">
+                    <div class="filter-bar">
+                        <select class="rounded-xl px-6 py-2" id="filter" onchange="filterProducts()">
+                            <option value="">Filter by category</option>
+                            <option value="coffee">Coffee</option>
+                            <option value="beans">Beans</option>
+                            <option value="equipment">Equipment</option>
+                        </select>
                     </div>
-                `).join('');
-
-                const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-                cartElement.innerHTML += `<p class="description text-xl text-bg-secondary font-bold">Total: $${totalPrice.toFixed(2)}</p>`;
-            }
-        }
-
-        document.querySelectorAll('.add-to-cart').forEach((button, index) => {
-            button.addEventListener('click', () => {
-                const product = button.parentElement;
-                const itemName = product.querySelector('.title').innerText;
-                const itemPrice = parseFloat(product.querySelector('.description').innerText.replace('$', ''));
-                // const itemQuantity = parseInt(product.querySelector('.product-quantity').innerText.replace('Quantity: ', ''));
-                
-                const item = {
-                    name: itemName,
-                    price: itemPrice,
-                    quantity: 1,
-                    // stockQuantity: itemQuantity
-                };
-
-                addToCart(item);
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', displayCart);
-    </script>
+                    <input class="px-6 py-2 rounded-xl w-3/12" type="text" id="search" placeholder="Search products..." oninput="filterProducts()">
+                </div>
+            </div>
+            <div class="product-list mb-4">
+                <div class="py-8 px-6 rounded-xl bg-bg-primary product-item" data-category="coffee">
+                    <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/TimemoreChestnutC3Black.webp" alt="camera">
+                    <h1 class="title text-bg-secondary uppercase text-2xl font-bold tracking-tighter">Timemore Chestnut C3 Black</h1>
+                    <p class="description text-xl text-bg-secondary">$1000.00</p>
+                    <p class="description mb-3 text-secondary-color product-quantity">Quantity: 5</p>
+                    <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold add-to-cart">Add to Cart</button>
+                </div>
+                <div class="py-8 px-6 rounded-xl bg-bg-primary product-item" data-category="coffee">
+                    <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/HarioV60MetalDripper.webp" alt="clock">
+                    <h1 class="title text-bg-secondary uppercase text-2xl font-bold tracking-tighter">Hario v60 Metal Dripper</h1>
+                    <p class="description text-xl text-bg-secondary">$1500.00</p> 
+                    <p class="description mb-3 text-secondary-color product-quantity">Quantity: 3</p>
+                    <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold add-to-cart">Add to Cart</button>
+                </div>
+                <div class="py-8 px-6 rounded-xl bg-bg-primary product-item" data-category="beans">
+                    <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/HarioRangeServer360mL.webp" alt="powerbank">
+                    <h1 class="title text-bg-secondary uppercase text-2xl font-bold tracking-tighter">Hario Range Server</h1>
+                    <p class="description text-xl text-bg-secondary">$800.00</p>
+                    <p class="description mb-3 text-secondary-color product-quantity">Quantity: 7</p>
+                    <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold add-to-cart">Add to Cart</button>
+                </div>
+                <div class="py-8 px-6 rounded-xl bg-bg-primary product-item" data-category="beans">
+                    <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/HarioV60BuonoKettle1.2L.webp" alt="smartphone">
+                    <h1 class="title text-bg-secondary uppercase text-2xl font-bold tracking-tighter">Hario v60 Buono Kettle 1.2L</h1>
+                    <p class="description text-xl text-bg-secondary">$500.00</p>
+                    <p class="description mb-3 text-secondary-color product-quantity">Quantity: 10</p>
+                    <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold add-to-cart">Add to Cart</button>
+                </div>
+                <div class="py-8 px-6 rounded-xl bg-bg-primary product-item" data-category="equipment">
+                    <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/Hario(V60)CeramicCoffeeDripperSize02-White.webp" alt="smartphone">
+                    <h1 class="title text-bg-secondary uppercase text-2xl font-bold tracking-tighter">Hario v60 Ceramic Coffee Dripper</h1>
+                    <p class="description text-xl text-bg-secondary">$100.00</p>
+                    <p class="description mb-3 text-secondary-color product-quantity">Quantity: 10</p>
+                    <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold add-to-cart">Add to Cart</button>
+                </div>
+                <div class="py-8 px-6 rounded-xl bg-bg-primary product-item" data-category="equipment">
+                    <img class="border-solid border-2 border-bg-secondary mb-4 bg-cover w-full rounded-xl" src="img/BrewistaArtisanGooseneckKettle1L-Black.webp" alt="smartphone">
+                    <h1 class="title text-bg-secondary uppercase text-2xl font-bold tracking-tighter">Brewista Artisan Gooseneck Kettle 1L</h1>
+                    <p class="description text-xl text-bg-secondary">$240.00</p>
+                    <p class="description mb-3 text-secondary-color product-quantity">Quantity: 10</p>
+                    <button type="submit" class="bg-bg-secondary py-3 px-6 text-bg-primary rounded-xl uppercase font-semibold add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="scripts/script.js"></script>
+   
 </body>
 </html>
